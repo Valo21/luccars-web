@@ -47,5 +47,5 @@ public interface IUserService {
   * @return the updated entity 
 	* @throws UnsavedEntityException
   */
-  User update(User user) throws UnsavedEntityException;
+  User update(UUID userId, User user) throws UnsavedEntityException;
 }

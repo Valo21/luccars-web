@@ -1,0 +1,23 @@
+### CREATE USER
+POST http://localhost:8002/api/users
+Content-Type: application/json
+
+{
+    "firstName": "Valentin",
+    "lastName": "Faciano",
+    "email": "valentin.faciano@gmail.com"
+}
+
+### GET ALL USERS
+GET http://localhost:8002/api/users
+
+### GET USER BY ID
+GET http://localhost:8002/api/users/3a6d0202-ba86-4514-8fff-4344f74c2635
+
+### UPDATE USER
+PUT http://localhost:8002/api/users/3a6d0202-ba86-4514-8fff-4344f74c2635
+Content-Type: application/json
+
+{
+    "firstName": "Valentin"
+}

@@ -57,9 +57,16 @@ public class UserService implements IUserService {
   }
 
 	@Override
-  public User update(final User user) throws UnsavedEntityException {
+  public User update(final UUID userId, final User user) throws UnsavedEntityException {
     try {
-      return this.userRepository.save(user);
+      User prevUser = this.findById(userId);
+
+      if (user.getFirstName() != null) prevUser.setFirstName(user.getFirstName());
+      if (user.getLastName() != null) prevUser.setLastName(user.getLastName());
+      if (user.getEmail() != null) prevUser.setEmail(user.getEmail());
+      if (user.getAddress() != null) prevUser.setAddress(user.getAddress());
+
+      return this.userRepository.save(prevUser);
     } catch (final Exception e) {
       log.error("User update(\"{}\"): {}", user.toString(), e.getMessage());
       throw new UnsavedEntityException(e.getMessage());

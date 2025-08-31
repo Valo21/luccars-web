@@ -21,7 +21,7 @@ import com.luccars.users.exceptions.UnsavedEntityException;
 import com.luccars.users.services.IUserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserRestController {
 
 	@Autowired
@@ -30,25 +30,25 @@ public class UserRestController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<User> findById(@PathVariable("id") UUID userId) throws ErrorProcessingException, EntityNotFoundException {
-		User salida = userService.findById(userId);
-		return new ResponseEntity<User>(salida, HttpStatus.OK);
+		User output = userService.findById(userId);
+		return new ResponseEntity<User>(output, HttpStatus.OK);
 	}
 
-	@GetMapping("/find-all")
+	@GetMapping
 		public ResponseEntity<List<User>> findAll() throws ErrorProcessingException {
-			List<User> salida = userService.findAll();
-			return new ResponseEntity<List<User>>(salida, HttpStatus.OK);
+			List<User> output = userService.findAll();
+			return new ResponseEntity<List<User>>(output, HttpStatus.OK);
 		}
 
 	@PostMapping
 		public ResponseEntity<User> save(@RequestBody User user) throws UnsavedEntityException {
-			User salida = userService.save(user);
-			return new ResponseEntity<User>(salida, HttpStatus.OK);
+			User output = userService.save(user);
+			return new ResponseEntity<User>(output, HttpStatus.OK);
 		}
 
-	@PutMapping
-		public ResponseEntity<User> update(@RequestBody User user) throws UnsavedEntityException {
-			User salida = userService.update(user);
-			return new ResponseEntity<User>(salida, HttpStatus.OK);
+	@PutMapping("/{id}")
+		public ResponseEntity<User> update(@PathVariable("id") UUID userId, @RequestBody User user) throws UnsavedEntityException {
+			User output = userService.update(userId, user);
+			return new ResponseEntity<User>(output, HttpStatus.OK);
 		}
 }
