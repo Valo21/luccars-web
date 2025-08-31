@@ -41,10 +41,10 @@ public class User implements Serializable {
 	private String address;
 
 	@CreationTimestamp()
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)
 	private LocalDate createdAt;
 	@UpdateTimestamp()
-	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP", nullable = false)
 	private LocalDate updatedAt;
 
 }
