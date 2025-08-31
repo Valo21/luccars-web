@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 
@@ -29,8 +27,7 @@ public class UserService implements IUserService {
 	@Override
   public User findById(final UUID userId) throws ErrorProcessingException, EntityNotFoundException {
     try {
-      // TODO: Add message EntityNotFoundException
-      return this.userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException());
+      return this.userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found"));
     } catch (final EntityNotFoundException e) {
       throw e;
     } catch (final Exception e) {
@@ -42,7 +39,7 @@ public class UserService implements IUserService {
 	@Override
   public List<User> findAll() throws ErrorProcessingException {
     try {
-      return this.usuarioRepository.findAll();
+      return this.userRepository.findAll();
     } catch (final Exception e) {
       log.error("User findAll(): {}", e.getMessage());
       throw new ErrorProcessingException(e.getMessage());

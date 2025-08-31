@@ -1,11 +1,16 @@
 package com.luccars.users.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +29,22 @@ public class User implements Serializable {
 
 	@Id
 	private UUID id;
+
+	@Column(nullable = false)
+	private String firstName;
+	@Column(nullable = false)
+	private String lastName;
+	@Column(nullable = false, unique = true)
+	private String email;
+
+	@Column(nullable = true)
+	private String address;
+
+	@CreationTimestamp()
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+	private LocalDate createdAt;
+	@UpdateTimestamp()
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+	private LocalDate updatedAt;
 
 }
