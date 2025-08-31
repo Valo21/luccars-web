@@ -2,9 +2,7 @@ package com.luccars.users.services;
 
 import java.util.List;
 import java.util.UUID;
-  
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+
 
 
 import com.luccars.users.entities.User;
