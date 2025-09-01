@@ -1,4 +1,4 @@
-package com.luccars.users.controllers;
+6package com.luccars.users.controllers;
 
 import java.util.List;
 import java.util.UUID;

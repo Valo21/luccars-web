@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ProductsApplication",
+            "request": "launch",
+            "mainClass": "com.luccars.products.ProductsApplication",
+            "projectName": "products"
+        },
+        {
+            "type": "java",
+            "name": "AuthApplication",
+            "request": "launch",
+            "mainClass": "com.luccars.auth.AuthApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-UsersApplication<users>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

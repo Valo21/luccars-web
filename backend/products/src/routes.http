@@ -1,0 +1,27 @@
+### CREATE PRODUCT
+POST http://localhost:8003/api/products
+Content-Type: application/json
+
+{
+    "name": "Papa",
+    "price": 2495.23,
+    "description": "valentin.faciano@gmail.com",
+    "stock": 10
+}
+
+### GET ALL PRODUCTS
+GET http://localhost:8003/api/products
+
+### GET PRODUCT BY ID
+GET http://localhost:8003/api/products/e6d2f26b-1e6f-4851-9549-85f5f1117c26
+
+### UPDATE PRODUCT
+PUT http://localhost:8003/api/products/e6d2f26b-1e6f-4851-9549-85f5f1117c26
+Content-Type: application/json
+
+{
+    "name": "Valentin"
+}
+
+### SEARCH PRODUCT
+GET http://localhost:8003/api/products/page-all-by-search?search=Valentin&page=0&size=10&sort=createdAt,asc
